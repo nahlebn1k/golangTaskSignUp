@@ -15,7 +15,7 @@ type User struct {
 
 var user User
 
-func GetUser(w http.ResponseWriter, r *http.Request) {
+func GetForm(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "index.html")
 }
 
@@ -28,7 +28,7 @@ func PostUser(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/get", GetUser).Methods("GET")
+	router.HandleFunc("/get", GetForm).Methods("GET")
 	router.HandleFunc("/post", PostUser).Methods("POST")
 	err := http.ListenAndServe(":8000", router)
 	if err != nil {
